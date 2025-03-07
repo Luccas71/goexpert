@@ -3,21 +3,29 @@ package main
 import "fmt"
 
 func main() {
-	total := func() int {
-		return sum(12, 43, 54)
-	}()
-	fmt.Println(total)
-}
+	nextInt := intSeq()
 
-func sum(numeros ...int) int {
-	total := 0
-	for _, numero := range numeros {
-		total += numero
+	fmt.Println("Chamada", nextInt())
+	fmt.Println("Chamada", nextInt())
+	fmt.Println("Chamada", nextInt())
+
+	nextInt2 := intSeq()
+
+	fmt.Println("Chamada", nextInt2())
+	fmt.Println("Chamada", nextInt2())
+	fmt.Println("Chamada", nextInt2())
+}
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
 	}
-	return total
 }
 
 /*
-	closure => função anônima
-
+	closure => retorna uma função anônima
+	=> armazena o estado
+	=> o estado é exclusivo daquela chamada
+	=> a cada nova atribuição, a função recomeça do seu estado inicial
 */

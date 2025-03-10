@@ -9,6 +9,7 @@ type Cliente struct {
 }
 
 // linkando um metodo a uma struct
+//um método precisa apontar para um ponteiro (*Cliente)
 func (c *Cliente) Desativar() {
 	c.Ativo = false
 	fmt.Printf("O cliente %s foi desativado\n", c.Nome)
